@@ -10,23 +10,27 @@ mkdir -p /etc/nginx/ssl
 # Generate SSL certificate if it doesn't exist
 if [ ! -f /etc/nginx/ssl/nginx.crt ]; then
     echo "Generating self-signed SSL certificate for ${DOMAIN_NAME}..."
-
     openssl req -x509 -nodes -days 365 -newkey rsa:2048 \
         -keyout /etc/nginx/ssl/nginx.key \
         -out /etc/nginx/ssl/nginx.crt \
-        -subj "/C=US/ST=State/L=City/O=Organization/CN=${DOMAIN_NAME}"
-
+        -subj "/C=ES/ST=Madrid/L=Madrid/O=42Madrid/CN=${DOMAIN_NAME}"
+    
     chmod 600 /etc/nginx/ssl/nginx.key
     chmod 644 /etc/nginx/ssl/nginx.crt
-
     echo "SSL certificate generated at /etc/nginx/ssl/"
 else
     echo "SSL certificate already exists. Skipping generation."
 fi
 
+# Substitute DOMAIN_NAME in nginx config
+echo "Substituting domain name in nginx configuration..."
+sed "s/\${DOMAIN_NAME}/$DOMAIN_NAME/g" /etc/nginx/nginx.conf > /tmp/nginx.conf
+mv /tmp/nginx.conf /etc/nginx/nginx.conf
+
 # Test nginx configuration before starting
 echo "Testing nginx configuration..."
 nginx -t
+
 echo "Nginx configuration test passed."
 
 # Start nginx in foreground (PID 1)
