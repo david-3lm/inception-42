@@ -387,7 +387,45 @@ This ensures WordPress only starts after MariaDB passes health checks.
 - [Understanding Docker Volumes](https://docs.docker.com/storage/volumes/)
 
 
+### AI Usage in This Project
+
+**Claude AI (Anthropic) was used for:**
+
+1. **Debugging and troubleshooting:**
+   - Diagnosing MariaDB healthcheck failures
+   - Fixing container dependency issues
+   - Resolving nginx configuration problems
+   - Addressing data persistence errors on container restart
+
+2. **Script development:**
+   - Implementing proper error handling and conditional logic
+   - Adding secret file reading functionality
+
+3. **Configuration optimization:**
+   - NGINX FastCGI parameters for PHP-FPM
+   - MariaDB server configuration for Docker environment
+   - Docker Compose healthcheck strategies
+   - TLS/SSL best practices
+
+4. **Documentation:**
+   - Explaining technical concepts (VMs vs containers, secrets vs env vars)
+   - Creating this comprehensive README
+   - Generating inline code comments
+
+**Parts completed without AI:**
+- Initial project structure and Dockerfile skeletons
+- Selection of base images and services
+- Environment variable planning
+- Manual testing and validation
+- Understanding project requirements
+
+**How AI was used:**
+- Provided complete code snippets that were reviewed and adapted
+- Explained concepts to deepen understanding
+- Suggested debugging approaches when issues arose
+- Helped compare different technical approaches
 
 ---
+
 
 **Last updated:** February 2026
