@@ -24,7 +24,7 @@ The infrastructure consists of three main services:
 
 1. **NGINX** - Web server and reverse proxy
    - Handles HTTPS termination with self-signed SSL certificates
-   - Redirects HTTP (port 80) to HTTPS (port 443)
+   - Redirects HTTP (port 80) to error 405
    - Forwards PHP requests to WordPress via FastCGI
    - Serves static files directly
 
